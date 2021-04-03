@@ -35,8 +35,8 @@ def randomDate(startYear, startMonth, startDay, endYear, endMonth, endDay):
 def randomHex():
 
     randomInt = lambda: random.randrange(0, 255)
-    return '{0:x}{1:x}{2:x}{3:x}{4:x}{5:x}{6:x}{7:x}{8:x}{9:x}'.format(
-        randomInt(), randomInt(), randomInt(), randomInt(), randomInt(), randomInt(), randomInt(), randomInt(), randomInt(), randomInt())
+    return '{0:x}{1:x}{2:x}{3:x}{4:x}{5:x}{6:x}{7:x}{8:x}{9:x}{10:x}'.format(
+        randomInt(), randomInt(), randomInt(), randomInt(), randomInt(), randomInt(), randomInt(), randomInt(), randomInt(), randomInt(), randomInt())
 
 def main():
 
