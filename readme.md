@@ -1,10 +1,10 @@
-# Random sales data
+# Random sales data
 
 ## Function
 
 Random generation of data tables representing orders, invoices, deliveries and receipts for testing databases and data processing libraries.
 
-## Usage
+## Usage
 
 To use, edit the parameters in **config.json** and run:
 
