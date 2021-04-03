@@ -1,6 +1,7 @@
 import datetime
 import json
 import random
+import csv
 
 def read_config(filename):
 
@@ -41,6 +42,10 @@ def randomHex():
 def formatDate(dateObj):
 
     return '{0}-{1}-{2}'.format(dateObj.year, dateObj.month, dateObj.day)
+
+def writeCSV(fn, table):
+
+    pass
 
 def main():
 
@@ -138,7 +143,30 @@ def main():
             order_total_gross
         ))
 
-    print(sales_invoices)
+        # Generate receipts
+
+        receipt_time = random.randrange(config_data['minPaymentDays'], config_data['maxPaymentDays'])
+        receipt_date = delivery_date + datetime.timedelta(receipt_time)
+
+        formatted_receipt_date = format(receipt_date)
+
+        receipt_id = randomHex()
+
+        sales_receipts.append((
+            receipt_id,
+            formatted_receipt_date,
+            customer_id,
+            order_total_gross,
+            order_id,
+            invoice_id
+        ))
+
+    OUTPUT_DIR = "/output"
+
+    writeCSV(OUTPUT_DIR + "/orders.csv", sales_orders)
+    writeCSV(OUTPUT_DIR + "/invoices.csv", sales_invoices)
+    writeCSV(OUTPUT_DIR + "/deliveries.csv", sales_deliveries)
+    writeCSV(OUTPUT_DIR + "/receipts.csv", sales_receipts)
 
 if __name__ == '__main__':
 

@@ -5,8 +5,8 @@
     "endDateYear": 2020,
     "endDateMonth": 12,
     "endDateDay": 31,
-    "numberOfCustomers": 50,
-    "numberOfProducts": 100,
+    "numberOfCustomers": 10,
+    "numberOfProducts": 5,
     "minLinesPerOrder": 5,
     "maxLinesPerOrder": 10,
     "minQtyPerLine": 50,
@@ -17,7 +17,7 @@
     "minDeliveryDays": 2,
     "maxDeliveryDays": 4,
     "minPaymentDays": 28,
-    "maxPaymentsDays": 40,
+    "maxPaymentDays": 40,
     "minOrders": 10,
     "maxOrders": 12
 }
