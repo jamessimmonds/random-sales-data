@@ -1,0 +1,23 @@
+{
+    "startDateYear": 2020,
+    "startDateMonth": 1,
+    "startDateDay": 1,
+    "endDateYear": 2020,
+    "endDateMonth": 12,
+    "endDateDay": 31,
+    "numberOfCustomers": 50,
+    "numberOfProducts": 100,
+    "minLinesPerOrder": 5,
+    "maxLinesPerOrder": 10,
+    "minQtyPerLine": 50,
+    "maxQtyPerLine": 800,
+    "minPrice": 100.0,
+    "maxPrice": 700.0,
+    "VATRate": 0.2,
+    "minDeliveryDays": 2,
+    "maxDeliveryDays": 4,
+    "minPaymentDays": 28,
+    "maxPaymentsDays": 40,
+    "minOrders": 10,
+    "maxOrders": 12
+}
