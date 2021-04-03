@@ -2,6 +2,7 @@ import datetime
 import json
 import random
 import csv
+import sys
 
 def read_config(filename):
 
@@ -23,15 +24,13 @@ def initialiseProducts(number, minPrice, maxPrice):
 
 def randomDate(startYear, startMonth, startDay, endYear, endMonth, endDay):
 
-    if startYear == endYear:
-        year = startYear
-    else:
-        year = random.randrange(startYear, endYear)
+    start = datetime.datetime(startYear, startMonth, startDay)
+    end = datetime.datetime(endYear, endMonth, endDay)
 
-    month = random.randrange(startMonth, endMonth)
-    day = random.randrange(startDay, endDay)
+    days = random.randrange(0, (end-start).days)
+    random_date = start + datetime.timedelta(days)
 
-    return datetime.datetime(year, month, day)
+    return random_date
 
 def randomHex():
 
@@ -53,6 +52,10 @@ def writeCSV(fn, table):
 
 def main():
 
+    timer_start = datetime.datetime.now()
+
+    print("Initialising data...")
+
     CONFIG_FN = 'config.json'
 
     config_data = read_config(CONFIG_FN)
@@ -66,7 +69,12 @@ def main():
 
     products = initialiseProducts(config_data['numberOfProducts'], config_data['minPrice'], config_data['maxPrice'])
 
+    print("Generating data...")
+
     for order in range(0, number_of_orders):
+
+        sys.stdout.write("\rGenerating order {0} of {1}".format(order, number_of_orders))
+        sys.stdout.flush()
 
         # Generate order
 
@@ -78,7 +86,8 @@ def main():
             config_data['startDateDay'],
             config_data['endDateYear'],
             config_data['endDateMonth'],
-            config_data['endDateDay'])
+            config_data['endDateDay']
+        )
 
         formatted_order_date = formatDate(order_date)
 
@@ -165,12 +174,18 @@ def main():
             invoice_id
         ))
 
+    print("\nWriting to files...")
+
     OUTPUT_DIR = "output"
 
     writeCSV(OUTPUT_DIR + "/orders.csv", sales_orders)
     writeCSV(OUTPUT_DIR + "/invoices.csv", sales_invoices)
     writeCSV(OUTPUT_DIR + "/deliveries.csv", sales_deliveries)
     writeCSV(OUTPUT_DIR + "/receipts.csv", sales_receipts)
+
+    timer_end = datetime.datetime.now()
+
+    print("Time elapsed: {0} seconds {1} microseconds".format((timer_end-timer_start).seconds, (timer_end-timer_start).microseconds))
 
 if __name__ == '__main__':
 

@@ -18,6 +18,6 @@
     "maxDeliveryDays": 4,
     "minPaymentDays": 28,
     "maxPaymentDays": 40,
-    "minOrders": 10,
-    "maxOrders": 12
+    "minOrders": 50000,
+    "maxOrders": 60000
 }
