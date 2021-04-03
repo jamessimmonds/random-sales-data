@@ -45,7 +45,11 @@ def formatDate(dateObj):
 
 def writeCSV(fn, table):
 
-    pass
+    with open(fn, 'w') as csvfile:
+        csvwriter = csv.writer(csvfile)
+
+        for row in table:
+            csvwriter.writerow(row)
 
 def main():
 
@@ -161,7 +165,7 @@ def main():
             invoice_id
         ))
 
-    OUTPUT_DIR = "/output"
+    OUTPUT_DIR = "output"
 
     writeCSV(OUTPUT_DIR + "/orders.csv", sales_orders)
     writeCSV(OUTPUT_DIR + "/invoices.csv", sales_invoices)
